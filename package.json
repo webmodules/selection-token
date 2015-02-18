@@ -1,0 +1,30 @@
+{
+  "name": "selection-token",
+  "version": "0.0.0",
+  "description": "Makes a DOM Element respect \"selection tokens\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/webmodules/selection-token.git"
+  },
+  "keywords": [
+    "dom",
+    "browser",
+    "range",
+    "selection",
+    "token",
+    "select-all",
+    "all",
+    "browserify",
+    "webmodule"
+  ],
+  "author": "Nathan Rajlich <nathan@tootallnate.net> (http://n8.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webmodules/selection-token/issues"
+  },
+  "homepage": "https://github.com/webmodules/selection-token"
+}
