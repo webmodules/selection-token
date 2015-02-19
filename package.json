@@ -26,5 +26,20 @@
   "bugs": {
     "url": "https://github.com/webmodules/selection-token/issues"
   },
-  "homepage": "https://github.com/webmodules/selection-token"
+  "homepage": "https://github.com/webmodules/selection-token",
+  "devDependencies": {
+    "babel": "~4.3.0",
+    "zuul": "~1.18.1"
+  },
+  "dependencies": {
+    "babel-runtime": "~4.3.0",
+    "component-closest": "~0.1.4",
+    "current-range": "~1.1.1",
+    "current-selection": "~1.1.1",
+    "get-document": "~1.0.0",
+    "node-contains": "~1.0.0",
+    "range-normalize": "~1.1.0",
+    "selection-is-backward": "~1.0.0",
+    "selection-set-range": "~1.0.0"
+  }
 }
