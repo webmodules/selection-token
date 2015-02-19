@@ -23,26 +23,26 @@ import selectionIsBackward from 'selection-is-backward';
  */
 
 function SelectionToken (node) {
-  var doc = getDocument(node);
+  let doc = getDocument(node);
 
   doc.addEventListener('selectionchange', function () {
-    var sel = currentSelection(doc);
+    let sel = currentSelection(doc);
     if (!sel) return;
 
-    var range = currentRange(sel);
+    let range = currentRange(sel);
     if (!range) return;
 
     if (!contains(node, range.commonAncestorContainer)) return;
 
-    var backward = !sel.collapsed && selectionIsBackward(sel);
+    let backward = !sel.collapsed && selectionIsBackward(sel);
 
     range = range.cloneRange();
 
-    var norm = normalize(range.cloneRange());
+    let norm = normalize(range.cloneRange());
 
-    var modified = false;
-    var tRange;
-    var token;
+    let modified = false;
+    let tRange;
+    let token;
 
     // start?
     token = closest(range.startContainer, '.selection-token', true, node);
