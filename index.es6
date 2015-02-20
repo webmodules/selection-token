@@ -11,6 +11,7 @@ import currentRange from 'current-range';
 import currentSelection from 'current-selection';
 import selectionSetRange from 'selection-set-range';
 import selectionIsBackward from 'selection-is-backward';
+import selectionchange from 'selectionchange-polyfill';
 
 /**
  * Accepts an HTMLElement node, and makes it check for `.selection-token` class
@@ -23,9 +24,8 @@ import selectionIsBackward from 'selection-is-backward';
  */
 
 function SelectionToken (node) {
-  let doc = getDocument(node);
 
-  doc.addEventListener('selectionchange', function () {
+  function onselectionchange () {
     let sel = currentSelection(doc);
     if (!sel) return;
 
@@ -73,7 +73,20 @@ function SelectionToken (node) {
     if (modified) {
       selectionSetRange(sel, range, backward);
     }
-  });
+  }
+
+  function cleanup () {
+    doc.removeEventListener('selectionchange', onselectionchange, false);
+  }
+
+  var doc = getDocument(node);
+
+  // ensure that the Document is emitting "selectionchange" events
+  selectionchange.start(doc);
+
+  doc.addEventListener('selectionchange', onselectionchange, false);
+
+  return cleanup;
 }
 
 export default SelectionToken;
