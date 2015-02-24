@@ -12,18 +12,14 @@ ES6_FILES := $(wildcard *.es6)
 
 COMPILED_FILES := $(ES6_FILES:.es6=.js)
 
-build: install $(COMPILED_FILES)
-
-install: node_modules
+build: $(COMPILED_FILES)
 
 clean: $(COMPILED_FILES)
 	rm $(COMPILED_FILES)
 
-distclean: clean
+distclean:
 	rm -r node_modules
 
-node_modules:
-	npm install
-
 %.js: %.es6
-	$(BABEL) -i selfContained -e $< --out-file $@
+	@printf '\e[1;93m %-10s\e[m %s > %s\n' "babel" "$<" "$@"
+	@$(BABEL) "$<" --optional runtime --experimental > "$@"
