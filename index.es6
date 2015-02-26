@@ -112,8 +112,6 @@ function SelectionToken (node) {
           if (n) {
             range.setStart(n, n.nodeType === 1 ? n.childNodes.length : n.nodeValue.length);
             range.setEnd(n, n.nodeType === 1 ? n.childNodes.length : n.nodeValue.length);
-            //range.setStartBefore(token);
-            //range.setEndBefore(token);
             selectionSetRange(sel, range, false);
           }
         }
@@ -134,8 +132,6 @@ function SelectionToken (node) {
           if (n) {
             range.setStart(n, 0);
             range.setEnd(n, 0);
-            //range.setStartAfter(token);
-            //range.setEndAfter(token);
             selectionSetRange(sel, range, false);
           }
         }
