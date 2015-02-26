@@ -12,6 +12,9 @@ import currentSelection from 'current-selection';
 import selectionSetRange from 'selection-set-range';
 import selectionIsBackward from 'selection-is-backward';
 import selectionchange from 'selectionchange-polyfill';
+import DEBUG from 'debug';
+
+let debug = DEBUG('selection-token');
 
 // keydown key codes
 const LEFT  = 37;
@@ -75,14 +78,13 @@ function SelectionToken (node) {
     }
 
     if (modified) {
-      console.log('setting range!', backward, range.toString());
+      debug('setting range! range=%o backward=%o', range.toString(), backward);
       selectionSetRange(sel, range, backward);
     }
   }
 
   function onkeydown (e) {
     if (composing) return;
-    console.log(e, e.which);
 
     let sel = currentSelection(doc);
     if (!sel) return;
@@ -106,7 +108,7 @@ function SelectionToken (node) {
         normalize(tRange);
 
         if (range.startContainer === tRange.startContainer && range.startOffset === tRange.startOffset) {
-          console.log('start is at beginning of token!');
+          debug('start is at beginning of token: %o', token);
           e.preventDefault();
           let n = token.previousSibling
           if (n) {
@@ -126,7 +128,7 @@ function SelectionToken (node) {
         normalize(tRange);
 
         if (range.endContainer === tRange.endContainer && range.endOffset === tRange.endOffset) {
-          console.log('end is at end of token!');
+          debug('end is at end of token: %o', token);
           e.preventDefault();
           let n = token.nextSibling;
           if (n) {
