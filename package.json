@@ -27,12 +27,8 @@
     "url": "https://github.com/webmodules/selection-token/issues"
   },
   "homepage": "https://github.com/webmodules/selection-token",
-  "devDependencies": {
-    "babel": "~4.4.6",
-    "zuul": "~1.18.1"
-  },
   "dependencies": {
-    "babel-runtime": "~4.4.6",
+    "babel-runtime": "4.7.4",
     "component-closest": "~0.1.4",
     "current-range": "~1.1.1",
     "current-selection": "~1.1.1",
@@ -43,5 +39,9 @@
     "selection-is-backward": "~1.0.0",
     "selection-set-range": "~1.0.0",
     "selectionchange-polyfill": "~1.0.0"
+  },
+  "devDependencies": {
+    "babel": "4.7.4",
+    "zuul": "~1.18.1"
   }
 }
